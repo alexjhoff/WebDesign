@@ -1,0 +1,76 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		FAC427E219EE078F001FA23E /* BMI.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = BMI.html; sourceTree = "<group>"; };
+		FAC427E319EE078F001FA23E /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		FAC427E419EE07AF001FA23E /* calculator.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = calculator.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		FAC427DB19EE077B001FA23E = {
+			isa = PBXGroup;
+			children = (
+				FAC427E219EE078F001FA23E /* BMI.html */,
+				FAC427E419EE07AF001FA23E /* calculator.js */,
+				FAC427E319EE078F001FA23E /* TemplateIcon2x.png */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		FAC427DC19EE077B001FA23E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = FAC427DF19EE077B001FA23E /* Build configuration list for PBXProject "BMI.html" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAC427DB19EE077B001FA23E;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		FAC427E019EE077B001FA23E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		FAC427E119EE077B001FA23E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAC427DF19EE077B001FA23E /* Build configuration list for PBXProject "BMI.html" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC427E019EE077B001FA23E /* Debug */,
+				FAC427E119EE077B001FA23E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAC427DC19EE077B001FA23E /* Project object */;
+}

@@ -1,0 +1,88 @@
+        body{
+            background:url("home-01.jpg") no-repeat center center fixed;
+            
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;
+        }
+       #main{
+            color:black;
+            border:5px solid black;
+            background-color: rgba(255,255,255,0.5);
+            margin-top:200px;
+            font: arial, sans-serif;
+        }
+
+#menubar {
+    position:fixed;
+    top:0px;
+    width: 100%;
+    list-style-type: none;
+    background-color: #830300;
+    margin-top: 10px;
+    margin-bottom:50px ;
+    height: 40px;
+    padding-top:15px;
+}
+#menubar li {
+    float: left;
+    width: 14%;
+    margin-left: 3%;
+    margin-right:3%;
+}
+#menubar li a {
+    font: 25px arial, sans-serif;
+    font-weight: bold;
+    color: #f1f1f1;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;   
+}
+
+
+
+#correctcont {
+    margin-left: 25%;
+    text-align: center;
+}
+#wrongcont {
+    margin-left:75%;
+    text-align: center;
+}
+#correct_labelcont {
+    margin-left: 25%;
+    text-align: center;
+}
+#wrong_labelcont {
+    margin-left: 75%;
+    text-align: center;
+}
+#control {
+    text-align: center;
+
+}
+#pg_title {
+    margin-left: 25%;
+    float: left;
+}
+#subject{
+    margin-left: 25%;
+    float: left;
+}
+#question{
+    text-align: center;
+    height: 200px;
+
+}
+#answers_list {
+    width: 50%;
+    list-style-type: none;
+    background-color: #830300;
+    margin-top: 10px;
+    margin-bottom:10px ;
+    margin-left: 25%;
+    padding-top:15px;
+    padding-bottom: 15px;
+    color: white;
+}

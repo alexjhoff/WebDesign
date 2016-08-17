@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title>FIL Quiz</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css'/>    
+    <script type='text/javascript' src="questions.js"></script>
+
+    </head>
+    <script>
+		var quiz_type = 0;
+		var score = 0;
+    	var temp_list = []; // Storing used questions here so we dont see duplicates with the random function
+		var correct;
+		var quizzes = [ frugal, geography];
+		var q_name = [ "Frugal Innovations Lab", "Geography"];
+		function getQ() {
+				if(temp_list.length == quizzes[quiz_type].length) {
+						//clearing list so we can repeat questions
+						for(var i = 0; i < temp_list.length; i++)
+								temp_list.pop();
+				}
+				var new_q_locn;
+				while(1) {
+						new_q_locn = Math.floor(Math.random() * quizzes[quiz_type].length);
+						if(temp_list.length == 0) {
+								correct = quizzes[quiz_type][new_q_locn].correctChoice;
+								return quizzes[quiz_type][new_q_locn];
+						}
+						for(var i = 0; i < temp_list.length; i++) {
+								if(temp_list[i] != new_q_locn) {
+										temp_list.push(new_q_locn);
+										correct = quizzes[quiz_type][new_q_locn].correctChoice;
+										return quizzes[quiz_type][new_q_locn];
+								}
+						}
+				}
+
+				return NULL;
+		}
+    	function registerHandlers(){
+        		document.getElementById("Start").onclick = runQuiz;
+				document.getElementById("nextQuestion").onclick = getNextQ;
+				document.getElementById("Quit").onclick = quitQuiz;
+    	}
+		function getNextQ() {
+				var question = document.getElementById("question");
+				while(question.firstElementChild!=null) {
+						question.removeChild(question.firstElementChild);
+				}
+        if(document.getElementById("q"))
+          		document.getElementById("question").removeChild(document.getElementById("q"));
+				var next_question = getQ();
+				if(next_question == null) {
+						return;
+				}
+				var q = document.createElement("h5");
+				q.setAttribute('id','q');
+				q.appendChild(document.createTextNode(next_question.question));
+				document.getElementById("question").appendChild(q);
+				var ans_list = document.createElement("ul");
+				ans_list.setAttribute('id','answers_list');
+				for(var j = 0; j < next_question.choices.length; j++) {
+						var choice = document.createElement("input");
+						choice.setAttribute('type', 'radio');
+						choice.setAttribute('name', 'answer_selector');
+						choice.setAttribute('value', next_question.choices[j]);
+						ans_list.appendChild(choice);
+
+						ans_list.appendChild(document.createElement("label").appendChild(document.createTextNode(next_question.choices[j])));
+
+						ans_list.appendChild(document.createElement("br"));
+				}
+
+				document.getElementById("question").appendChild(ans_list);
+
+				var list = document.getElementsByName("answer_selector");
+				if(!list) {
+						alert("No List!");
+						return;
+				}
+				for(var i = 0; i< list.length; i++) {
+						list[i].onclick = updateScore;
+				}
+		}
+		function updateScore() {
+				var elements = document.getElementsByName("answer_selector");
+				var elem = document.getElementById("answers_list");
+				for(var i = 0; i < elements.length; i++) {
+						if(elements[i].checked) {
+								if(elements[i].value == correct) {
+										score+=5;
+										elem.appendChild(document.createElement("p").appendChild(document.createTextNode("Correct!")));
+										document.getElementById("correct").firstElementChild.innerHTML=((Number(document.getElementById("correct").firstElementChild.innerHTML) + 1));
+								}
+								else {
+									  elem.appendChild(document.createElement("p").appendChild(document.createTextNode("Incorrect! The correct answer was "+correct)));
+										document.getElementById("wrong").firstElementChild.innerHTML=((Number(document.getElementById("wrong").firstElementChild.innerHTML) + 1));
+								}
+								
+						}
+				}
+		}
+		function quitQuiz() {
+				var num_correct = document.getElementById("correct").firstElementChild;
+				
+				num_correct = num_correct.innerHTML;
+				var num_wrong = document.getElementById("wrong").firstElementChild.innerHTML;
+				
+				alert("Your Final Score: "+score+", With "+num_correct+" Correct and "+num_wrong+" Wrong");
+
+				score = 0;
+				quiz_type = 0;
+				document.getElementById("correct").firstElementChild.innerHTML = 0;
+				document.getElementById("wrong").firstElementChild.innerHTML = 0;
+				if(document.getElementById("q"))
+					document.getElementById("question").removeChild(document.getElementById("q"));
+				var question = document.getElementById("question");
+				while(question.firstElementChild!=null) 
+						question.removeChild(question.firstElementChild);
+
+		}
+    	function runQuiz(){
+        		quiz_type = Math.floor(Math.random() * 2); // initializes to one of the two possible quizzes
+
+				document.getElementById("subject").innerHTML = "Quiz Topic: " + q_name[quiz_type];
+       		
+				var question = document.getElementById("question");
+        		while(question.firstElementChild!=null) {
+						question.removeChild( question.firstElementChild );
+				}
+				if(document.getElementById("q"))
+          			document.getElementById("question").removeChild(document.getElementById("q"));
+
+				getNextQ();
+		}
+    </script>
+    <body onload="registerHandlers()">
+
+    <div>
+    <ul id = "menubar">
+        <li><a href = "main.php">Home</a></li>
+        <li><a href = "projects.php">Projects</a></li>
+        <li><a href = "FILTeam.html">Our Team</a></li>
+        <li><a href = "quiz.html">FIL Quiz</a></li>
+        <li><a href = "forum.php">Forum</a></li>
+    </ul> 
+    </div> 
+
+        <div id="main" style = "clear:both">
+            <div id="title">
+                <h1 style="font: arial, sans-serif;" id="pg_title">Quiz Game</h1>
+                <h1 style="font: arial, sans-serif;" id="subject"></h1>
+                <!-- <script>document.write(Date())</script> -->
+            </div>
+            <div id="score" style="clear: both;">
+            	<div id="correctcont">
+            	<div id="correct" style = "font: arial, sans-serif;float: left;">
+					<p>0</p>
+				</div>
+				</div>
+				<div id="wrongcont">
+                <div id="wrong" style = "font: arial, sans-serif;float: left;">
+					<p>0</p>
+                </div>
+            	</div>
+            	<div id="correct_labelcont">
+				<div id="correct_label" style = "font: arial, sans-serif;clear: both; float: left;">
+					<p>Correct</p>
+				</div>
+				</div>
+				<div id="wrong_labelcont">
+                <div id="wrong_label" style = "font: arial, sans-serif;float: left;">
+					<p>Wrong</p>
+                </div>
+                </div>
+			</div>
+            <div id="question" style = "clear: both;">
+				<h3 id="q" style="font: arial, sans-serif;"> </h3>
+			</div>
+            <div id="control">
+				<button type="button" style="font: arial, sans-serif;" id="Start">Start</button>
+                <button type="button" style="font: arial, sans-serif;" id="nextQuestion">Next Question</button>
+				<button type="button" style="font: arial, sans-serif;" id="Quit">Quit</button>
+            </div>
+			<div id="footer" style="font: arial, sans-serif;">
+			    <p>Griffin Cook and Alex Hoff<br/>COEN 161 Fall 2014 MWF 9:15 Section</p>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height:100%;
+    background-image:url("1937486_10202296417442324_8073025149832874767_n.jpg");
+    background-repeat:repeat;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#links {
+    position:fixed;
+    top:0px;
+    width: 100%;
+    list-style-type: none;
+    background-color: #830300;
+    margin-top: 10px;
+    margin-bottom:50px ;
+    height: 60px;
+    padding-top:15px;
+    z-index: 1;
+}
+#links li {
+    float: left;
+    width: 14%;
+    margin-left: 3%;
+    margin-right:3%;
+}
+#links li a {
+    font: 25px arial, sans-serif;
+    font-weight: bold;
+    color: #f1f1f1;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;   
+}
+#wrapper {
+    margin: 0 auto;
+    width: 1500px;
+    background-color: rgba(255,255,255,0.8);
+    position: relative;
+}
+
+#banner {
+    width: 750px;
+    margin: 10px auto;
+    border: 5px solid DarkBlue;
+    line-height: 5em;
+    background-color:red;
+    background-image:url("1937486_10202296417442324_8073025149832874767_n.jpg");
+    background-repeat:repeat;
+    vertical-align:left;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#right {
+    width: 180px;
+    position: absolute;
+    top: 480px;
+    bottom: 690px;
+    right: 70px;
+    background-color: yellow;
+    vertical-align:top;
+    border: 5px solid green;
+    padding: 10px;
+}
+#PCFimage {
+    position: absolute;
+    top: 730px;
+    right: 20px;
+    vertical-align: top;
+    border: 5px solid green;
+    background-color: blueviolet;
+}
+#banner1 {
+    width: 760px;
+    margin: 10px auto;
+    border: 5px solid gold;
+    line-height: 5em;
+    background-color:red;
+    background-image:url("snacks[1].jpg");
+    background-repeat:repeat;
+    vertical-align:left;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#footer{
+    background-color:yellowgreen;
+    border: 10px solid lightblue;
+}
+#Top{
+    box-shadow:2px 2px 5px #000;
+    border: 2px solid;
+    border-radius: 25px;
+}
+#SVG{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#SVG2{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}

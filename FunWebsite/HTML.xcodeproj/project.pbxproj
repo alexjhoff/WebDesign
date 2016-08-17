@@ -1,0 +1,78 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		FA064FAE19DE3ABB00D0EADC /* homework1.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = homework1.html; sourceTree = "<group>"; };
+		FA064FAF19DE3ABB00D0EADC /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		FA2FE79219E842D500CAC833 /* projects.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = projects.html; sourceTree = "<group>"; };
+		FAA8B2BF19E8303B00EC7AD4 /* styleSheet.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styleSheet.css; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		FA064FA719DE3A8C00D0EADC = {
+			isa = PBXGroup;
+			children = (
+				FA064FAE19DE3ABB00D0EADC /* homework1.html */,
+				FAA8B2BF19E8303B00EC7AD4 /* styleSheet.css */,
+				FA2FE79219E842D500CAC833 /* projects.html */,
+				FA064FAF19DE3ABB00D0EADC /* TemplateIcon2x.png */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		FA064FA819DE3A8C00D0EADC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = FA064FAB19DE3A8C00D0EADC /* Build configuration list for PBXProject "HTML" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA064FA719DE3A8C00D0EADC;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		FA064FAC19DE3A8C00D0EADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		FA064FAD19DE3A8C00D0EADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA064FAB19DE3A8C00D0EADC /* Build configuration list for PBXProject "HTML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA064FAC19DE3A8C00D0EADC /* Debug */,
+				FA064FAD19DE3A8C00D0EADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA064FA819DE3A8C00D0EADC /* Project object */;
+}
