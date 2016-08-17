@@ -1,0 +1,376 @@
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab4/part1.sql
+Customer Name = Smith                                                           
+City = SJ                                                                       
+
+PL/SQL procedure successfully completed.
+
+Create table DEPT_4 (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+insert into DEPT_4 values('D2','testing','SFO',20000.00,50000.00)
+*
+ERROR at line 1:
+ORA-02290: check constraint (AHOFF.DEPT_4CONS2) violated 
+
+
+insert into DEPT_4 values('D2','testing','SFO',50000.00,20000.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+insert into DEPT_4 values('D1','testing','SJ',NULL,NULL)
+                                              *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("AHOFF"."DEPT_4"."BUDGET") 
+
+
+modify budget NUMBER(10,2) NOT NULL
+       *
+ERROR at line 2:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+
+0 rows deleted.
+
+modify budget NUMBER(10,2) NOT NULL
+       *
+ERROR at line 2:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+ADD CONSTRAINT DEPT_4_cons3 CHECK (location in ('SJ','SFO','LA'))
+               *
+ERROR at line 2:
+ORA-02264: name already used by an existing constraint 
+
+
+insert into DEPT_4 values('D9','testing','NY',10000,1000)
+*
+ERROR at line 1:
+ORA-02290: check constraint (AHOFF.DEPT_4_CONS3) violated 
+
+
+
+STATUS                                                                          
+--------                                                                        
+ENABLED                                                                         
+
+
+STATUS                                                                          
+--------                                                                        
+ENABLED                                                                         
+
+Create table EMP_4 (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+ADD CONSTRAINT EMP_4_cons1 CHECK (gender in ('M', 'F'))
+               *
+ERROR at line 2:
+ORA-02264: name already used by an existing constraint 
+
+
+insert into EMP_4 values(1,'Smith','D13',60000.00,'F')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+
+1 row created.
+
+insert into EMP_4 values(1,'Smith','D13',60000.00,'F')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+
+DEPTN DEPTNAME   LOCATION                 BUDGET EXTRA_FUNDS                    
+----- ---------- -------------------- ---------- -----------                    
+D1    testing    SJ                        10000       10000                    
+D3    testing    SFO                       10000       10000                    
+D4    testing    SFO                       10000       10000                    
+D5    testing    SFO                       10000       10000                    
+D6    testing    SFO                       10000       10000                    
+D2    testing    SFO                       50000       20000                    
+D13   dev        SFO                       50000       20000                    
+
+7 rows selected.
+
+
+     EMPNO EMPNAME              DEPTI     SALARY GE                             
+---------- -------------------- ----- ---------- --                             
+         1 Smith                D1         60000 F                              
+         2 Jones                D2         60000 M                              
+         3 Nelson               D3         60000 F                              
+         4 Hoff                 D1         60000 M                              
+         6 Fay                  D6         60000 M                              
+
+
+1 row deleted.
+
+
+     EMPNO EMPNAME              DEPTI     SALARY GE                             
+---------- -------------------- ----- ---------- --                             
+         1 Smith                D1         60000 F                              
+         2 Jones                D2         60000 M                              
+         3 Nelson               D3         60000 F                              
+         4 Hoff                 D1         60000 M                              
+         6 Fay                  D6         60000 M                              
+
+SQL> 
+
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab4/part2.sql
+drop table dept_4
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+CREATE TABLE Projects_4(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+CREATE TABLE WORKS_4(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT into DEPT_4 values ('D1', 'testing', 'SJ', 10000, 10000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+INSERT into EMP_4 values (1, 'Smith', 'D1', 60000.00, 'F')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+INSERT into DEPT_4 values ('D3', 'testing', 'SFO', 10000, 10000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+INSERT into EMP_4 values (2, 'Jones', 'D2', 60000.00, 'M')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+INSERT into DEPT_4 values ('D4', 'testing', 'SFO', 10000, 10000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+INSERT into EMP_4 values (3, 'Nelson', 'D3', 60000.00, 'F')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+INSERT into DEPT_4 values ('D5', 'testing', 'SFO', 10000, 10000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+INSERT into EMP_4 values (4, 'Hoff', 'D1', 60000.00, 'M')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+INSERT into DEPT_4 values ('D6', 'testing', 'SFO', 10000, 10000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259324) violated 
+
+
+INSERT into EMP_4 values (6, 'Fay', 'D6', 60000.00, 'M')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259378) violated 
+
+
+INSERT INTO projects_4 VALUES ('P1', 'Project1', 4.0, 'D1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+INSERT INTO projects_4 VALUES ('P2', 'Project2', 5.0, 'D1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+INSERT INTO projects_4 VALUES ('P3', 'Proj3', 2.0, 'D2')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+INSERT INTO projects_4 VALUES ('P4', 'Proj4', 6.0, 'D3')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+INSERT INTO projects_4 VALUES ('P5', 'Proj4', 6.0, 'D4')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+INSERT INTO projects_4 VALUES ('P6', 'Proj4', 6.0, 'D6')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259718) violated 
+
+
+Insert into Works_4 values (1,'P1',SYSDATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259720) violated 
+
+
+INSERT INTO works_4 VALUES (2, 'P2', SYSDATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259720) violated 
+
+
+INSERT INTO works_4 VALUES (3, 'P3', SYSDATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259720) violated 
+
+
+INSERT INTO works_4 VALUES (4, 'P4', SYSDATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259720) violated 
+
+
+INSERT INTO works_4 VALUES (1, 'P5', SYSDATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00259720) violated 
+
+
+
+1 row created.
+
+
+     EMPNO                                                                      
+----------                                                                      
+         1                                                                      
+         3                                                                      
+         2                                                                      
+         3                                                                      
+         4                                                                      
+         1                                                                      
+         6                                                                      
+
+7 rows selected.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab4/part3.sql
+Create table CUST_5 (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+Create table ORDER_5 (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+insert into CUST_5 values('c1','Smith','SJ')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260372) violated 
+
+
+insert into CUST_5 values('c2','Jones','SJ')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260372) violated 
+
+
+insert into CUST_5 values('c3','Peters','SFO')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260372) violated 
+
+
+insert into CUST_5 values('c20','Chen','LA')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260372) violated 
+
+
+insert into CUST_5 values('c33','Williams','SFO')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260372) violated 
+
+
+insert into ORDER_5 values('o90',2000.00,'c1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260373) violated 
+
+
+insert into ORDER_5 values('o91',4000.00,'c1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260373) violated 
+
+
+insert into ORDER_5 values('o92',12000.00,'c1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260373) violated 
+
+
+insert into ORDER_5 values('o55',1000.00,'c2')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260373) violated 
+
+
+insert into ORDER_5 values('o56',2000.00,'c2')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00260373) violated 
+
+
+
+1 row created.
+
+SQL> start Lab4_5.sql
+Customer Name = Smith                                                           
+City = SJ                                                                       
+
+PL/SQL procedure successfully completed.
+
+No errors.
+SQL> spool off

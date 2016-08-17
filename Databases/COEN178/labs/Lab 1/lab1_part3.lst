@@ -1,0 +1,50 @@
+SQL> CREATE TABLE mycourses(
+  2  	courseNo char(10),
+  3  	units int,
+  4  	grade char(2), PRIMARY KEY(courseNo)
+  5  );
+
+Table created.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab1/mycourses.sql;
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab1/P3Quer.sql
+
+COURSENO        UNITS GR                                                        
+---------- ---------- --                                                        
+COEN 178            4 A                                                         
+COEN 168            4 B                                                         
+MATH 13             4 C                                                         
+ENGR 19             4 A                                                         
+
+
+COURSENO                                                                        
+----------                                                                      
+COEN 178                                                                        
+COEN 168                                                                        
+MATH 13                                                                         
+ENGR 19                                                                         
+
+
+COURSENO                                                                        
+----------                                                                      
+COEN 178                                                                        
+ENGR 19                                                                         
+
+
+COURSENO        UNITS                                                           
+---------- ----------                                                           
+MATH 13             4                                                           
+
+SQL> spool off

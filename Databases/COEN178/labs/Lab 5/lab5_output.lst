@@ -1,0 +1,146 @@
+SQL> @lab5tables.sql
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> set serveroutput on
+SQL> ;
+  1* insert into ORDER_5 values('o77',44000.00,'c20')
+SQL> set serveroutput on;
+SQL> @lab5_exer1.sql
+
+Procedure created.
+
+No errors.
+SQL> exec increaseAmount
+6 orders selected and updated                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab5_2.sql
+
+Procedure created.
+
+No errors.
+SQL> exec changeCity
+1 orders selected and updated                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab5_3.sql
+
+Procedure created.
+
+No errors.
+SQL> exec showOrdersByAmount(10000)
+o92 12200                                                                       
+o77 44200                                                                       
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab5_4.sql
+
+Procedure created.
+
+No errors.
+SQL> exec showCustWithLargeOrders(10000)
+Smith SJ                                                                        
+Chen SJ                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab5_5.sql
+
+Function created.
+
+No errors.
+SQL> select get_amountfororder('o90')from dual;
+
+GET_AMOUNTFORORDER('O90')                                                       
+--------------------------------------------------------------------------------
+2200                                                                            
+
+SQL> @lab5_6.sql
+
+Procedure created.
+
+No errors.
+SQL> exec change_amount('o90',9999);
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab5_7.sql
+
+Trigger created.
+
+No errors.
+SQL> delete
+  2    2  from order_5
+  3    3  where orderno = 'o90';
+  2  from order_5
+  *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> delete
+  2  from order_5
+  3  where orderno = 'o90';
+
+1 row deleted.
+
+SQL> select * from DeletedOrder
+  2  ;
+
+ORDER     AMOUNT                                                                
+----- ----------                                                                
+o90         9999                                                                
+
+SQL> 

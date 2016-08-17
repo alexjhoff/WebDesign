@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE changeCity
+AS
+   total_rows number(2);
+BEGIN
+   UPDATE CUST_5
+      SET city = 'SJ'
+      WHERE city = 'LA'
+   END IF; 
+END;
+/
+show errors;

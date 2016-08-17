@@ -1,0 +1,15 @@
+CREATE or REPLACE FUNCTION GET_AmountForOrder(orderno_param IN  ORDER_5.orderno%type) 
+/* make the type of the orderno_param the same type as the orderno column in ORDER_5 table.*/
+RETURN varchar IS		/* Should return a string */
+str_l varchar(50);	/* declare a local string variable, str_l of varchar(50)*/
+amount_l number(10,2);		/* make the type of amount_l the same type as the amount type I ORDER_5 table */
+BEGIN
+	
+	Select amount into amount_l
+	FROM ORDER_5
+	where orderno =	orderno_param;	-- orderno same as orderno_param
+	str_l := orderno.amount;	-- The amount for OrderNo: orderno is $ amount
+	RETURN str_l;
+END;
+/
+Show Errors;

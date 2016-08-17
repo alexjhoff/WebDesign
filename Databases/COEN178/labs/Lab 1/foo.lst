@@ -1,0 +1,16 @@
+SQL> SELECT * from test
+  2  ;
+
+      TNUM STR                                                                  
+---------- ----------                                                           
+         1 A test                                                               
+        10 ten                                                                  
+        11 eleven                                                               
+         2 two                                                                  
+         5 five                                                                 
+
+SQL> host ls
+
+SQL> host pwd
+
+SQL> spool off

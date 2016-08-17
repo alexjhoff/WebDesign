@@ -1,0 +1,10 @@
+Create table DEPT_4 (
+  DeptNo CHAR(5) Primary Key,
+  deptname CHAR(10),
+  location CHAR(20),
+  budget NUMBER(10,2),
+  extra_funds NUMBER(10,2),
+  CONSTRAINT DEPT_4cons1 CHECK(budget >= 0),
+  CONSTRAINT DEPT_4cons2 CHECK(extra_funds <= budget)
+);
+

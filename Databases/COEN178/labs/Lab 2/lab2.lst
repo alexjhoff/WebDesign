@@ -1,0 +1,1304 @@
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab2/lab2_tables.sql
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab2/lab2_values.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO Schedule VALUES('dg5','c32','t')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (AHOFF.SYS_C00252291) violated - parent key not 
+found 
+
+
+INSERT INTO Schedule VALUES('dg6','c2','m')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (AHOFF.SYS_C00252290) violated - parent key not 
+found 
+
+
+INSERT INTO Schedule VALUES('ds3','a3','f')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (AHOFF.SYS_C00252290) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO Schedule VALUES('dsg2','c1','s');
+INSERT INTO Schedule VALUES('dsg2','c1','s')
+*
+ERROR at line 1:
+ORA-02290: check constraint (AHOFF.SYS_C00252289) violated 
+
+
+SQL> INSERT INTO Schedule VALEUS('dby3','c7','m');
+INSERT INTO Schedule VALEUS('dby3','c7','m')
+                            *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO Schedule Values('dby3',c7','m')
+  2  
+SQL> INSERT INTO Schedule VALUES('dby3','c7','m');
+
+1 row created.
+
+SQL> INSERT INTO Schedule VALUES('dsm2','b7','r');
+
+1 row created.
+
+SQL> SELECT custId, CONCAT(first_name,last_name) fullname, city
+  2  FROM Customers;
+
+CUS FULLNAME                  CITY                                              
+--- ------------------------- ----------                                        
+c1  John      Smith           SJ                                                
+c2  Mary      Jones           SFO                                               
+a1  Vincent   Chen            SJ                                                
+a12 Greg      King            SJ                                                
+c7  James     Bond            LA                                                
+x10 Susan     Blogg           SFO                                               
+a3  Bernie    Sanders         SFO                                               
+b7  Donald    Trump           LA                                                
+
+8 rows selected.
+
+SQL> SELECT custId, first_name, last_name, city
+  2  From Customers
+  3  ORDER BY last_name;
+
+CUS FIRST_NAME LAST_NAME       CITY                                             
+--- ---------- --------------- ----------                                       
+x10 Susan      Blogg           SFO                                              
+c7  James      Bond            LA                                               
+a1  Vincent    Chen            SJ                                               
+c2  Mary       Jones           SFO                                              
+a12 Greg       King            SJ                                               
+a3  Bernie     Sanders         SFO                                              
+c1  John       Smith           SJ                                               
+b7  Donald     Trump           LA                                               
+
+8 rows selected.
+
+SQL> SELECT serviceId, custId, Sday
+  2  From Schedule
+  3  ORDER BY serviceId, custId DESC;
+
+SERVICEID  CUS SD                                                               
+---------- --- --                                                               
+dby3       x10 f                                                                
+dby3       c7  m                                                                
+dg5        c1  r                                                                
+dg5        c1  t                                                                
+dsg1       c1  m                                                                
+dsg1       a12 w                                                                
+dsm2       b7  r                                                                
+
+7 rows selected.
+
+SQL> SELECT serviceid
+  2  FROM DeliveryService
+  3  WHERE serviceid not in(SELECT serviceid FROM Schedule);
+
+SERVICEID                                                                       
+----------                                                                      
+dsb1                                                                            
+dm3                                                                             
+dsg2                                                                            
+dgs7                                                                            
+
+SQL> SELECT name from customer, schedule where day = 'M';
+SELECT name from customer, schedule where day = 'M'
+                                          *
+ERROR at line 1:
+ORA-00904: "DAY": invalid identifier 
+
+
+SQL> SELECT name from customers, schedule where sday = 'm';
+SELECT name from customers, schedule where sday = 'm'
+       *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> SELECT first_name,last_name from customers, schedule where day = 'm';
+SELECT first_name,last_name from customers, schedule where day = 'm'
+                                                           *
+ERROR at line 1:
+ORA-00904: "DAY": invalid identifier 
+
+
+SQL> Select first_name, last_name from customers, schedule where sday = 'm';
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+John       Smith                                                                
+Mary       Jones                                                                
+Vincent    Chen                                                                 
+Greg       King                                                                 
+James      Bond                                                                 
+Susan      Blogg                                                                
+Bernie     Sanders                                                              
+Donald     Trump                                                                
+John       Smith                                                                
+Mary       Jones                                                                
+Vincent    Chen                                                                 
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+Greg       King                                                                 
+James      Bond                                                                 
+Susan      Blogg                                                                
+Bernie     Sanders                                                              
+Donald     Trump                                                                
+
+16 rows selected.
+
+SQL> Select first_name, last_name from customers where (select sday
+  2  from schedule
+  3  where sday = 'm');
+where sday = 'm')
+                *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> Select first_name, last_name
+  2  From customers,schedule
+  3  where sday = 'm' and Schedule.custId = customers.custid;
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+John       Smith                                                                
+James      Bond                                                                 
+
+SQL> Select first_name, last_name
+  2  From customers,schedule
+  3  where sday = 'm' and customers.custid = schedule.custid;
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+John       Smith                                                                
+James      Bond                                                                 
+
+SQL> 
+SQL> Select last_name
+  2  From Customers, DeliveryService, Schedule
+  3  where DeliveryService.serviceID = schedule.serviceid and schedule.custId = customers.custid;
+
+LAST_NAME                                                                       
+---------------                                                                 
+Smith                                                                           
+Smith                                                                           
+Smith                                                                           
+King                                                                            
+Bond                                                                            
+Blogg                                                                           
+Trump                                                                           
+
+7 rows selected.
+
+SQL> Select servicefee
+  2  From DeliveryService
+  3  ;
+
+SERVICEFEE                                                                      
+----------                                                                      
+        25                                                                      
+        10                                                                      
+        10                                                                      
+        15                                                                      
+        20                                                                      
+        30                                                                      
+        50                                                                      
+        10                                                                      
+
+8 rows selected.
+
+SQL> Select servicefee highest_Servicefee
+  2  From DeliveryService
+  3  Where >= all (Select servicefee from deliver
+  4  ;
+Where >= all (Select servicefee from deliver
+      *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> Select servicefee highest_Servicefee
+  2  from deliveryservice
+  3  where servicefee >= all (select servicefee from deliveryservice);
+
+HIGHEST_SERVICEFEE                                                              
+------------------                                                              
+                50                                                              
+
+SQL> =Select servicefee
+SP2-0734: unknown command beginning "=Select se..." - rest of line ignored.
+SQL> Select servicefee
+  2  from delieveryservice
+  3  where max (select servicefee from deliveryservice);
+where max (select servicefee from deliveryservice)
+      *
+ERROR at line 3:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select servicefee
+  2  from deliveryservice
+  3  where
+  4  ;
+
+*
+ERROR at line 4:
+ORA-00936: missing expression 
+
+
+SQL> select max servicefee
+  2  from deliveryservice
+  3  ;
+select max servicefee
+       *
+ERROR at line 1:
+ORA-00904: "MAX": invalid identifier 
+
+
+SQL> select max(servicefee)
+  2  from deliveryservice
+  3  ;
+
+MAX(SERVICEFEE)                                                                 
+---------------                                                                 
+             50                                                                 
+
+SQL> Select Max(serviceFee) Highest_service
+  2  FROM deliveryService
+  3  ;
+
+HIGHEST_SERVICE                                                                 
+---------------                                                                 
+             50                                                                 
+
+SQL> Select count(sday)
+  2  From schedule
+  3  group by sday;
+
+COUNT(SDAY)                                                                     
+-----------                                                                     
+          1                                                                     
+          2                                                                     
+          1                                                                     
+          2                                                                     
+          1                                                                     
+
+SQL> Select sday, count(sday)
+  2  From schedule
+  3  group by sday
+  4  ;
+
+SD COUNT(SDAY)                                                                  
+-- -----------                                                                  
+t            1                                                                  
+r            2                                                                  
+w            1                                                                  
+m            2                                                                  
+f            1                                                                  
+
+SQL> Select distinct sday, count(serviceId)
+  2  from schedule
+  3  group by sday
+  4  ;
+
+SD COUNT(SERVICEID)                                                             
+-- ----------------                                                             
+t                 1                                                             
+r                 2                                                             
+w                 1                                                             
+m                 2                                                             
+f                 1                                                             
+
+SQL> Select * from schedule
+  2  ;
+
+SERVICEID  CUS SD                                                               
+---------- --- --                                                               
+dsg1       c1  m                                                                
+dsg1       a12 w                                                                
+dby3       x10 f                                                                
+dg5        c1  r                                                                
+dg5        c1  t                                                                
+dby3       c7  m                                                                
+dsm2       b7  r                                                                
+
+7 rows selected.
+
+SQL> Select A.custid,B.custid,A.city
+  2  from Customer A, Customer B
+  3  where A.city = B.city;
+where A.city = B.city
+               *
+ERROR at line 3:
+ORA-00904: "B"."CITY": invalid identifier 
+
+
+SQL> Select A.custid,B.custid,A.city
+  2  from Customers A, Customers B
+  3  Where A.city = B.city;
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+a12 c1  SJ                                                                      
+a1  c1  SJ                                                                      
+c1  c1  SJ                                                                      
+a3  c2  SFO                                                                     
+x10 c2  SFO                                                                     
+c2  c2  SFO                                                                     
+a12 a1  SJ                                                                      
+a1  a1  SJ                                                                      
+c1  a1  SJ                                                                      
+a12 a12 SJ                                                                      
+a1  a12 SJ                                                                      
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+c1  a12 SJ                                                                      
+b7  c7  LA                                                                      
+c7  c7  LA                                                                      
+a3  x10 SFO                                                                     
+x10 x10 SFO                                                                     
+c2  x10 SFO                                                                     
+a3  a3  SFO                                                                     
+x10 a3  SFO                                                                     
+c2  a3  SFO                                                                     
+b7  b7  LA                                                                      
+c7  b7  LA                                                                      
+
+22 rows selected.
+
+SQL> select * from customers
+  2  ;
+
+CUS FIRST_NAME LAST_NAME       CITY                                             
+--- ---------- --------------- ----------                                       
+c1  John       Smith           SJ                                               
+c2  Mary       Jones           SFO                                              
+a1  Vincent    Chen            SJ                                               
+a12 Greg       King            SJ                                               
+c7  James      Bond            LA                                               
+x10 Susan      Blogg           SFO                                              
+a3  Bernie     Sanders         SFO                                              
+b7  Donald     Trump           LA                                               
+
+8 rows selected.
+
+SQL> Select distinct A.custid, B.custid, A.city
+  2  From Customers A, Customers B
+  3  Where A.city = B.city;
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+a12 c1  SJ                                                                      
+a1  c1  SJ                                                                      
+c1  c1  SJ                                                                      
+a3  c2  SFO                                                                     
+x10 c2  SFO                                                                     
+c2  c2  SFO                                                                     
+a12 a1  SJ                                                                      
+a1  a1  SJ                                                                      
+c1  a1  SJ                                                                      
+a12 a12 SJ                                                                      
+a1  a12 SJ                                                                      
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+c1  a12 SJ                                                                      
+b7  c7  LA                                                                      
+c7  c7  LA                                                                      
+a3  x10 SFO                                                                     
+x10 x10 SFO                                                                     
+c2  x10 SFO                                                                     
+a3  a3  SFO                                                                     
+x10 a3  SFO                                                                     
+c2  a3  SFO                                                                     
+b7  b7  LA                                                                      
+c7  b7  LA                                                                      
+
+22 rows selected.
+
+SQL> Select A.custid, B.custid, A.city
+  2  From Customers A, Customers B
+  3  ;
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+c1  a1  SJ                                                                      
+c1  a12 SJ                                                                      
+c1  a3  SJ                                                                      
+c1  b7  SJ                                                                      
+c1  c1  SJ                                                                      
+c1  c2  SJ                                                                      
+c1  c7  SJ                                                                      
+c1  x10 SJ                                                                      
+c2  a1  SFO                                                                     
+c2  a12 SFO                                                                     
+c2  a3  SFO                                                                     
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+c2  b7  SFO                                                                     
+c2  c1  SFO                                                                     
+c2  c2  SFO                                                                     
+c2  c7  SFO                                                                     
+c2  x10 SFO                                                                     
+a1  a1  SJ                                                                      
+a1  a12 SJ                                                                      
+a1  a3  SJ                                                                      
+a1  b7  SJ                                                                      
+a1  c1  SJ                                                                      
+a1  c2  SJ                                                                      
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+a1  c7  SJ                                                                      
+a1  x10 SJ                                                                      
+a12 a1  SJ                                                                      
+a12 a12 SJ                                                                      
+a12 a3  SJ                                                                      
+a12 b7  SJ                                                                      
+a12 c1  SJ                                                                      
+a12 c2  SJ                                                                      
+a12 c7  SJ                                                                      
+a12 x10 SJ                                                                      
+c7  a1  LA                                                                      
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+c7  a12 LA                                                                      
+c7  a3  LA                                                                      
+c7  b7  LA                                                                      
+c7  c1  LA                                                                      
+c7  c2  LA                                                                      
+c7  c7  LA                                                                      
+c7  x10 LA                                                                      
+x10 a1  SFO                                                                     
+x10 a12 SFO                                                                     
+x10 a3  SFO                                                                     
+x10 b7  SFO                                                                     
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+x10 c1  SFO                                                                     
+x10 c2  SFO                                                                     
+x10 c7  SFO                                                                     
+x10 x10 SFO                                                                     
+a3  a1  SFO                                                                     
+a3  a12 SFO                                                                     
+a3  a3  SFO                                                                     
+a3  b7  SFO                                                                     
+a3  c1  SFO                                                                     
+a3  c2  SFO                                                                     
+a3  c7  SFO                                                                     
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+a3  x10 SFO                                                                     
+b7  a1  LA                                                                      
+b7  a12 LA                                                                      
+b7  a3  LA                                                                      
+b7  b7  LA                                                                      
+b7  c1  LA                                                                      
+b7  c2  LA                                                                      
+b7  c7  LA                                                                      
+b7  x10 LA                                                                      
+
+64 rows selected.
+
+SQL> Select distinct(A.custid, B.custid), A.city
+  2  From Customers A, Customers B
+  3  Where A.city=B.city
+  4  ;
+Select distinct(A.custid, B.custid), A.city
+                        *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> Select A.custid, B.custid, A.city
+  2  From Customers A, Customers B
+  3  Where A.city = B.city and A.custid != B.custid;
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+a12 c1  SJ                                                                      
+a1  c1  SJ                                                                      
+a3  c2  SFO                                                                     
+x10 c2  SFO                                                                     
+a12 a1  SJ                                                                      
+c1  a1  SJ                                                                      
+a1  a12 SJ                                                                      
+c1  a12 SJ                                                                      
+b7  c7  LA                                                                      
+a3  x10 SFO                                                                     
+c2  x10 SFO                                                                     
+
+CUS CUS CITY                                                                    
+--- --- ----------                                                              
+x10 a3  SFO                                                                     
+c2  a3  SFO                                                                     
+c7  b7  LA                                                                      
+
+14 rows selected.
+
+SQL> Select first_name, last_name
+  2  From Customers
+  3  Where ;
+Where 
+     *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> Select first_name,last_name
+  2  
+SQL> Select first_name,last_name
+  2  From customers,deliveryservice
+  3  Where customers.
+  4  
+SQL> Select First_name,last_name
+  2  From customers, deliveryservice,schedule
+  3  Where schedule.serviceid = deliveryservice.serviceid and customers.city = deliveryservice.location;
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+John       Smith                                                                
+John       Smith                                                                
+Mary       Jones                                                                
+Mary       Jones                                                                
+Mary       Jones                                                                
+Mary       Jones                                                                
+Vincent    Chen                                                                 
+Vincent    Chen                                                                 
+Greg       King                                                                 
+Greg       King                                                                 
+James      Bond                                                                 
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+Susan      Blogg                                                                
+Susan      Blogg                                                                
+Susan      Blogg                                                                
+Susan      Blogg                                                                
+Bernie     Sanders                                                              
+Bernie     Sanders                                                              
+Bernie     Sanders                                                              
+Bernie     Sanders                                                              
+Donald     Trump                                                                
+
+20 rows selected.
+
+SQL> Select distinct First_name,last_name
+  2  From customers, deliveryservice,schedule
+  3  Where schedule.serviceid = deliveryservice.serviceid
+  4  and customers.city = deliveryse
+  5  
+SQL> Select distinct First_name,last_name
+  2  From customers, deliveryservice,schedule
+  3  Where schedule.serviceid = deliveryservice.serviceid
+  4  and customers.city = deliveryservice.location;
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+James      Bond                                                                 
+Donald     Trump                                                                
+John       Smith                                                                
+Greg       King                                                                 
+Mary       Jones                                                                
+Vincent    Chen                                                                 
+Susan      Blogg                                                                
+Bernie     Sanders                                                              
+
+8 rows selected.
+
+SQL> select * from customers,deliveryservice;
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c1  John       Smith           SJ         dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+c1  John       Smith           SJ         dsb1       books                      
+SJ                      10                                                      
+                                                                                
+c1  John       Smith           SJ         dsm2       movies                     
+LA                      10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c1  John       Smith           SJ         dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+c1  John       Smith           SJ         dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+c1  John       Smith           SJ         dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c1  John       Smith           SJ         dm3        cars                       
+SJ                      50                                                      
+                                                                                
+c1  John       Smith           SJ         dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+c2  Mary       Jones           SFO        dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c2  Mary       Jones           SFO        dsb1       books                      
+SJ                      10                                                      
+                                                                                
+c2  Mary       Jones           SFO        dsm2       movies                     
+LA                      10                                                      
+                                                                                
+c2  Mary       Jones           SFO        dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c2  Mary       Jones           SFO        dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+c2  Mary       Jones           SFO        dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+c2  Mary       Jones           SFO        dm3        cars                       
+SJ                      50                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c2  Mary       Jones           SFO        dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dsb1       books                      
+SJ                      10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a1  Vincent    Chen            SJ         dsm2       movies                     
+LA                      10                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a1  Vincent    Chen            SJ         dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dm3        cars                       
+SJ                      50                                                      
+                                                                                
+a1  Vincent    Chen            SJ         dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a12 Greg       King            SJ         dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+a12 Greg       King            SJ         dsb1       books                      
+SJ                      10                                                      
+                                                                                
+a12 Greg       King            SJ         dsm2       movies                     
+LA                      10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a12 Greg       King            SJ         dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+a12 Greg       King            SJ         dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+a12 Greg       King            SJ         dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a12 Greg       King            SJ         dm3        cars                       
+SJ                      50                                                      
+                                                                                
+a12 Greg       King            SJ         dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+c7  James      Bond            LA         dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c7  James      Bond            LA         dsb1       books                      
+SJ                      10                                                      
+                                                                                
+c7  James      Bond            LA         dsm2       movies                     
+LA                      10                                                      
+                                                                                
+c7  James      Bond            LA         dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c7  James      Bond            LA         dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+c7  James      Bond            LA         dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+c7  James      Bond            LA         dm3        cars                       
+SJ                      50                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+c7  James      Bond            LA         dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dsb1       books                      
+SJ                      10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+x10 Susan      Blogg           SFO        dsm2       movies                     
+LA                      10                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+x10 Susan      Blogg           SFO        dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dm3        cars                       
+SJ                      50                                                      
+                                                                                
+x10 Susan      Blogg           SFO        dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a3  Bernie     Sanders         SFO        dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+a3  Bernie     Sanders         SFO        dsb1       books                      
+SJ                      10                                                      
+                                                                                
+a3  Bernie     Sanders         SFO        dsm2       movies                     
+LA                      10                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a3  Bernie     Sanders         SFO        dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+a3  Bernie     Sanders         SFO        dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+a3  Bernie     Sanders         SFO        dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+a3  Bernie     Sanders         SFO        dm3        cars                       
+SJ                      50                                                      
+                                                                                
+a3  Bernie     Sanders         SFO        dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+b7  Donald     Trump           LA         dsg1       grocery                    
+SJ                      25                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+b7  Donald     Trump           LA         dsb1       books                      
+SJ                      10                                                      
+                                                                                
+b7  Donald     Trump           LA         dsm2       movies                     
+LA                      10                                                      
+                                                                                
+b7  Donald     Trump           LA         dby3       babygoods                  
+SFO                     15                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+b7  Donald     Trump           LA         dsg2       grocery                    
+SFO                     20                                                      
+                                                                                
+b7  Donald     Trump           LA         dg5        greengoods                 
+SFO                     30                                                      
+                                                                                
+b7  Donald     Trump           LA         dm3        cars                       
+SJ                      50                                                      
+                                                                                
+
+CUS FIRST_NAME LAST_NAME       CITY       SERVICEID  ITEM                       
+--- ---------- --------------- ---------- ---------- ---------------            
+LOCATION        SERVICEFEE                                                      
+--------------- ----------                                                      
+b7  Donald     Trump           LA         dgs7       toys                       
+SFO                     10                                                      
+                                                                                
+
+64 rows selected.
+
+SQL> select * from customers
+  2  ;
+
+CUS FIRST_NAME LAST_NAME       CITY                                             
+--- ---------- --------------- ----------                                       
+c1  John       Smith           SJ                                               
+c2  Mary       Jones           SFO                                              
+a1  Vincent    Chen            SJ                                               
+a12 Greg       King            SJ                                               
+c7  James      Bond            LA                                               
+x10 Susan      Blogg           SFO                                              
+a3  Bernie     Sanders         SFO                                              
+b7  Donald     Trump           LA                                               
+
+8 rows selected.
+
+SQL> select * from deliveryservice
+  2  ;
+
+SERVICEID  ITEM            LOCATION        SERVICEFEE                           
+---------- --------------- --------------- ----------                           
+dsg1       grocery         SJ                      25                           
+dsb1       books           SJ                      10                           
+dsm2       movies          LA                      10                           
+dby3       babygoods       SFO                     15                           
+dsg2       grocery         SFO                     20                           
+dg5        greengoods      SFO                     30                           
+dm3        cars            SJ                      50                           
+dgs7       toys            SFO                     10                           
+
+8 rows selected.
+
+SQL> select * from schedule
+  2  ;
+
+SERVICEID  CUS SD                                                               
+---------- --- --                                                               
+dsg1       c1  m                                                                
+dsg1       a12 w                                                                
+dby3       x10 f                                                                
+dg5        c1  r                                                                
+dg5        c1  t                                                                
+dby3       c7  m                                                                
+dsm2       b7  r                                                                
+
+7 rows selected.
+
+SQL> Select First_name,last_name
+  2  
+SQL> Select First_name,last_name
+  2  From customers, deliveryservice,schedule
+  3  Where schedule.serviceid = deliveryservice.serviceid
+  4  and customers.city = deliveryservice.location
+  5  and customers.custid = schedule.custid;
+
+FIRST_NAME LAST_NAME                                                            
+---------- ---------------                                                      
+John       Smith                                                                
+Greg       King                                                                 
+Susan      Blogg                                                                
+Donald     Trump                                                                
+
+SQL> @Create table L_EMP (empNo Integer Primary Key, empname CHAR(10),deptId CHAR(5));
+SP2-0310: unable to open file "Create.sql"
+SQL> Create table L_DEPT (deptId CHAR(5) Primary Key, deptname CHAR(10));
+
+Table created.
+
+SQL> drop table l_emp
+  2  ;
+drop table l_emp
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> drop table l_dept;
+
+Table dropped.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab2/lab2_tables2.sql
+
+Table created.
+
+
+Table created.
+
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab2/lab2_values2.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> SELECT * from L_EMP;
+
+     EMPNO EMPNAME    DEPTI                                                     
+---------- ---------- -----                                                     
+         1 smith      d1                                                        
+         2 jones      d2                                                        
+         3 wayne      d1                                                        
+         4 moor       d3                                                        
+         5 king       d1                                                        
+         6 chen       d1                                                        
+         7 winger     d3                                                        
+
+7 rows selected.
+
+SQL> SELECT * FROM L_DEPT;
+
+DEPTI DEPTNAME                                                                  
+----- ----------                                                                
+d1    Research                                                                  
+d2    Devt                                                                      
+d3    Testing                                                                   
+d4    Advert                                                                    
+
+SQL> SELECT EMPNAME
+  2  FROM L_EMP, L_DEPT
+  3  Where L_emp.deptid = L_dept.deptid;
+
+EMPNAME                                                                         
+----------                                                                      
+smith                                                                           
+jones                                                                           
+wayne                                                                           
+moor                                                                            
+king                                                                            
+chen                                                                            
+winger                                                                          
+
+7 rows selected.
+
+SQL> SELECT EMPNAME
+  2  FROM L_EMP
+  3  WH
+  4  
+SQL> SELECT EMPNAME, DEPTNAME
+  2  FROM L_EMP, L_DEPT
+  3  WHERE L_emp.deptid = l_DEPT.DEPTID AND deptName = "Testing";
+WHERE L_emp.deptid = l_DEPT.DEPTID AND deptName = "Testing"
+                                                  *
+ERROR at line 3:
+ORA-00904: "Testing": invalid identifier 
+
+
+SQL> SELECT EMPNAME, DEPTNAME
+  2  FROM L_EMP, L_DEPT
+  3  WHERE L_EMP.DEPTID = L_DEPT.DEPTID AND DEPTNAME = 'Testing';
+
+EMPNAME    DEPTNAME                                                             
+---------- ----------                                                           
+moor       Testing                                                              
+winger     Testing                                                              
+
+SQL> SELECT EMPNAME
+  2  FROM L_EMP
+  3  WHERE DEPTID in (SELECT DEPTID
+  4  		FROM L_DEPT
+  5  		WHERE DEPTID = 'Testing');
+
+no rows selected
+
+SQL> SELECT EMPNAME
+  2  FROM L_EMP
+  3  
+SQL> SELECT EMPNAME
+  2  FROM L_EMP
+  3  WHERE DEPTID in (SELECT DEPTID
+  4  		FROM L_DEPT
+  5  
+SQL> 
+SQL> SELECT EMPNAME
+  2  FROM L_EMP
+  3  WHERE DEPTID in (SELECT DEPTID
+  4  		FROM L_DEPT
+  5  		WHERE DEPTNAME = 'Testing');
+
+EMPNAME                                                                         
+----------                                                                      
+moor                                                                            
+winger                                                                          
+
+SQL> Select empname from L_EMP where exists
+  2  (Select * from L_DEPT where deptname='Testing');
+
+EMPNAME                                                                         
+----------                                                                      
+smith                                                                           
+jones                                                                           
+wayne                                                                           
+moor                                                                            
+king                                                                            
+chen                                                                            
+winger                                                                          
+
+7 rows selected.
+
+SQL> Select * from L_dept where deptname = 'Testing';
+
+DEPTI DEPTNAME                                                                  
+----- ----------                                                                
+d3    Testing                                                                   
+
+SQL> Select EMPNAME FROM L_EMP
+  2  WHERE EXISTS(SELECT * FROM L_DEPT
+  3  	    WHERE deptName = 'Testing'
+  4  	    AND L_EMP.deptID = L_DEPT.deptID);
+
+EMPNAME                                                                         
+----------                                                                      
+winger                                                                          
+moor                                                                            
+
+SQL> SELECT * From L_emp
+  2  ;
+
+     EMPNO EMPNAME    DEPTI                                                     
+---------- ---------- -----                                                     
+         1 smith      d1                                                        
+         2 jones      d2                                                        
+         3 wayne      d1                                                        
+         4 moor       d3                                                        
+         5 king       d1                                                        
+         6 chen       d1                                                        
+         7 winger     d3                                                        
+
+7 rows selected.
+
+SQL> SELECT * FROM L_DEPT;
+
+DEPTI DEPTNAME                                                                  
+----- ----------                                                                
+d1    Research                                                                  
+d2    Devt                                                                      
+d3    Testing                                                                   
+d4    Advert                                                                    
+
+SQL> SELECT DEPTNAME
+  2  FROM L_DEPT
+  3  WHERE DEPTNAME in (SELECT DEPTNAME
+  4  			FROM L_DEPT[A[
+  5  
+SQL> SELECT DEPTNAME
+  2  FROM L_DEPT
+  3  WHERE DEPTNAME not in (SELECT DEPTNAME
+  4  			FROM L_DEPT);
+
+no rows selected
+
+SQL> SELECT DEPTNAME
+  2  FROM L_DEPT
+  3  WHERE DEPTID not in (SELECT DEPTID
+  4  			FROM L_EMP);
+
+DEPTNAME                                                                        
+----------                                                                      
+Advert                                                                          
+
+SQL> SELECT DEPTNAME
+  2  FROM L_DEPT
+  3  WHERE not exists(SELECT DEPTID
+  4  			FROM L_DEPT, L_EMP
+  5  			WHERE L_DEPT.DEPTID = L_EMP.DEPTID);
+WHERE not exists(SELECT DEPTID
+                        *
+ERROR at line 3:
+ORA-00918: column ambiguously defined 
+
+
+SQL> SELECT DEPTNAME
+  2  FROM L_DEPT
+  3  WHERE NOT EXISTS(SELECT * FROM L_EMP
+  4  		WHERE L_DEPT.DEPTID = L_EMP.DEPTID);
+
+DEPTNAME                                                                        
+----------                                                                      
+Advert                                                                          
+
+SQL> 

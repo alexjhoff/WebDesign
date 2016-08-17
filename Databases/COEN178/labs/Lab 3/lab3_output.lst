@@ -1,0 +1,142 @@
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/labs/lab3/queries.sql
+
+DEPTI DEPTNAME   EMPNAME                                                        
+----- ---------- ----------                                                     
+d1    Research   smith                                                          
+d2    Devt       jones                                                          
+d1    Research   wayne                                                          
+d3    Testing    moor                                                           
+d1    Research   king                                                           
+d1    Research   chen                                                           
+d3    Testing    winger                                                         
+d4    Advert                                                                    
+
+8 rows selected.
+
+
+DEPTI   COUNT(*)                                                                
+----- ----------                                                                
+d1             4                                                                
+d2             1                                                                
+d3             2                                                                
+
+
+DEPTI   COUNT(*)                                                                
+----- ----------                                                                
+d1             4                                                                
+d2             1                                                                
+d3             2                                                                
+
+
+DEPTN   EMPCOUNT                                                                
+----- ----------                                                                
+d1             4                                                                
+d2             1                                                                
+d3             2                                                                
+
+
+DEPTN   EMPCOUNT                                                                
+----- ----------                                                                
+d1             4                                                                
+d2             1                                                                
+d3             2                                                                
+
+
+DEPTN DEPTNAME     EMPCOUNT                                                     
+----- ---------- ----------                                                     
+d1    Research            4                                                     
+d2    Devt                1                                                     
+d3    Testing             2                                                     
+
+
+DEPTN DEPTNAME     EMPCOUNT                                                     
+----- ---------- ----------                                                     
+d1    Research            4                                                     
+d2    Devt                1                                                     
+d3    Testing             2                                                     
+
+
+DEPTN DEPTNAME     EMPCOUNT                                                     
+----- ---------- ----------                                                     
+d1    Research            4                                                     
+d2    Devt                1                                                     
+d3    Testing             2                                                     
+
+
+DEPTN DEPTNAME     EMPCOUNT                                                     
+----- ---------- ----------                                                     
+d1    Research            4                                                     
+d2    Devt                1                                                     
+d3    Testing             2                                                     
+
+
+DEPTI                                                                           
+-----                                                                           
+d1                                                                              
+
+
+DEPTI                                                                           
+-----                                                                           
+d1                                                                              
+
+
+DEPTI                                                                           
+-----                                                                           
+d1                                                                              
+
+
+DEPTI                                                                           
+-----                                                                           
+d1                                                                              
+
+
+SNAME           CITY                                                            
+--------------- ----------                                                      
+Jones           San Jose                                                        
+
+
+SNAME           CITY                                                            
+--------------- ----------                                                      
+Jones           San Jose                                                        
+
+
+DEPTI DEPTNAME   EMPNAME                                                        
+----- ---------- ----------                                                     
+d1    Research   smith                                                          
+d2    Devt       jones                                                          
+d1    Research   wayne                                                          
+d3    Testing    moor                                                           
+d1    Research   king                                                           
+d1    Research   chen                                                           
+d3    Testing    winger                                                         
+
+7 rows selected.
+
+
+DEPTI DEPTNAME   EMPNAME                                                        
+----- ---------- ----------                                                     
+d1    Research   smith                                                          
+d2    Devt       jones                                                          
+d1    Research   wayne                                                          
+d3    Testing    moor                                                           
+d1    Research   king                                                           
+d1    Research   chen                                                           
+d3    Testing    winger                                                         
+
+7 rows selected.
+
+
+DEPTI DEPTNAME   EMPNAME                                                        
+----- ---------- ----------                                                     
+d1    Research   smith                                                          
+d2    Devt       jones                                                          
+d1    Research   wayne                                                          
+d3    Testing    moor                                                           
+d1    Research   king                                                           
+d1    Research   chen                                                           
+d3    Testing    winger                                                         
+d4    Advert                                                                    
+
+8 rows selected.
+
+SQL> spool off
