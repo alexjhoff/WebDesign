@@ -1,0 +1,14 @@
+CREATE OR REPLACE TRIGGER cancelOrder_trig
+AFTER DELETE ON mealOrder FOR EACH ROW
+DECLARE
+name_l Customer.name%type;
+phone_l Customer.phone%type;
+BEGIN
+    Select name, phone INTO name_l, phone_l
+    From Customer
+    Where acctId = :old.acctId;
+    
+    Insert into cancelledOrders values(:old.acctID,name_l,phone_l);
+END;
+/
+show errors;

@@ -1,0 +1,107 @@
+SQL> @Select distinct acctid, phone
+SP2-0310: unable to open file "Select.sql"
+SQL>   2  from customer
+SQL>   3  where phone in (select phone from customer group by phone having count(phone)>1);
+SQL> 
+SQL> @/DCNFS/users/student/ahoff/Documents/COEN178/homework/HW1/a1_queries_aHoff.sql
+ from customer
+ *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+sandwich                                                                        
+broccoli pie                                                                    
+pasta                                                                           
+chicken pie                                                                     
+steak                                                                           
+
+7 rows selected.
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+sandwich                                                                        
+broccoli pie                                                                    
+pasta                                                                           
+chicken pie                                                                     
+steak                                                                           
+
+7 rows selected.
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+sandwich                                                                        
+broccoli pie                                                                    
+pasta                                                                           
+chicken pie                                                                     
+steak                                                                           
+
+7 rows selected.
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+sandwich                                                                        
+broccoli pie                                                                    
+pasta                                                                           
+chicken pie                                                                     
+steak                                                                           
+
+7 rows selected.
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+
+
+NAME                                                                            
+---------------                                                                 
+oatmeal                                                                         
+fruit_plate                                                                     
+
+
+MEALTYPE   COUNT(1)                                                             
+-------- ----------                                                             
+D                 4                                                             
+
+
+MEALTYPE   COUNT(1)                                                             
+-------- ----------                                                             
+D                 4                                                             
+
+
+6 rows updated.
+
+
+6 rows updated.
+
+
+6 rows updated.
+
+
+6 rows updated.
+
+
+ACCTID      PHONE                                                               
+------ ----------                                                               
+A1     4085551212                                                               
+A6     4086661212                                                               
+A9     4086661212                                                               
+A10    4085551212                                                               
+
+SQL> spool off

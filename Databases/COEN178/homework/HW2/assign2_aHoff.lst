@@ -1,0 +1,153 @@
+SQL> SELECT * FROM MealItem;
+
+ITEMID NAME                 PRICE   CALORIES                                    
+------ --------------- ---------- ----------                                    
+1      oatmeal                  3        120                                    
+2      fruit_plate            7.5        220                                    
+3      steak                20.99        420                                    
+4      chicken pie           12.5        350                                    
+5      broccoli pie            10        200                                    
+6      pasta                   12        250                                    
+7      sandwich                 8        200                                    
+
+7 rows selected.
+
+SQL> SELECT * FROM MealMenu;
+
+MENUID ITEMID MEALTYPE                                                          
+------ ------ --------                                                          
+M1     1      B                                                                 
+M2     2      L                                                                 
+M3     1      L                                                                 
+M4     4      D                                                                 
+M5     5      D                                                                 
+M6     6      D                                                                 
+M7     7      D                                                                 
+
+7 rows selected.
+
+SQL> SELECT * FROM Customer;
+
+ACCTID NAME                 PHONE                                               
+------ --------------- ----------                                               
+A1     Smith           4085551212                                               
+A4     Jones           4085554444                                               
+A2     Clark           4083331212                                               
+A6     Chen            4086661212                                               
+A9     Mayer           4086661212                                               
+A10    Smith           4085551212                                               
+A3     Hernandez       4087771212                                               
+A8     Hill            4082221212                                               
+
+8 rows selected.
+
+SQL> SELECT * FROM MealOrder;SELECT * FROM MealItem;
+SELECT * FROM MealOrder;SELECT * FROM MealItem
+                       *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> SELECT * FROM MealItem;
+
+ITEMID NAME                 PRICE   CALORIES                                    
+------ --------------- ---------- ----------                                    
+1      oatmeal                  3        120                                    
+2      fruit_plate            7.5        220                                    
+3      steak                20.99        420                                    
+4      chicken pie           12.5        350                                    
+5      broccoli pie            10        200                                    
+6      pasta                   12        250                                    
+7      sandwich                 8        200                                    
+
+7 rows selected.
+
+SQL> SELECT * FROM MealMenu;
+
+MENUID ITEMID MEALTYPE                                                          
+------ ------ --------                                                          
+M1     1      B                                                                 
+M2     2      L                                                                 
+M3     1      L                                                                 
+M4     4      D                                                                 
+M5     5      D                                                                 
+M6     6      D                                                                 
+M7     7      D                                                                 
+
+7 rows selected.
+
+SQL> SELECT * FROM Customer;
+
+ACCTID NAME                 PHONE                                               
+------ --------------- ----------                                               
+A1     Smith           4085551212                                               
+A4     Jones           4085554444                                               
+A2     Clark           4083331212                                               
+A6     Chen            4086661212                                               
+A9     Mayer           4086661212                                               
+A10    Smith           4085551212                                               
+A3     Hernandez       4087771212                                               
+A8     Hill            4082221212                                               
+
+8 rows selected.
+
+SQL> SELECT * FROM MealOrder;
+
+ACCTID MENUID STARTDATE ENDDATE                                                 
+------ ------ --------- ---------                                               
+A1     M1     10-JAN-16 16-JAN-16                                               
+A1     M2     10-JAN-16 16-JAN-16                                               
+A2     M3     10-FEB-16 26-FEB-16                                               
+A2     M1     11-MAR-16 26-MAR-16                                               
+A4     M5     07-APR-16 07-MAY-16                                               
+A6     M4     10-MAY-16 16-JUN-16                                               
+A8     M6     15-JUN-16 23-JUN-16                                               
+A1     M3     10-FEB-16 26-FEB-16                                               
+
+8 rows selected.
+
+SQL> exec addMealOrder('A2', 'M5', date '2016-04-07', date '2016-05-07')
+
+PL/SQL procedure successfully completed.
+
+SQL> exec mostMealOrders()
+BEGIN mostMealOrders(); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7: 
+PLS-00221: 'MOSTMEALORDERS' is not a procedure or is undefined 
+ORA-06550: line 1, column 7: 
+PL/SQL: Statement ignored 
+
+
+SQL> Select mostMealOrders() from DUAL;
+
+MOSTMEALORDERS()                                                                
+--------------------------------------------------------------------------------
+Clark           4083331212                                                      
+
+SQL> delete from mealOrder where acctID = 'A2';
+
+3 rows deleted.
+
+SQL> delete from mealOrder where acctId = 'A4';
+
+1 row deleted.
+
+SQL> select * from cancelledOrders;
+
+ACCTID NAME                 PHONE                                               
+------ --------------- ----------                                               
+A2     Clark           4083331212                                               
+A2     Clark           4083331212                                               
+A2     Clark           4083331212                                               
+A4     Jones           4085554444                                               
+
+SQL> select mostCancelled() from DUAL;
+
+MOSTCANCELLED()                                                                 
+--------------------------------------------------------------------------------
+Clark           4083331212                                                      
+
+SQL> spool off
