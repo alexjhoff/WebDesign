@@ -1,0 +1,13 @@
+CREATE OR REPLACE TRIGGER display_account_trig
+AFTER INSERT
+   ON ACCOUNTS_6
+   FOR EACH ROW
+BEGIN
+  dbms_output.put_line('Accountno:' || :NEW.accountno);
+  dbms_output.put_line('Accounttype:' || :NEW.accounttype);
+  dbms_output.put_line('Amount:' || :NEW.amount);
+  dbms_output.put_line('Custno:' || :NEW.custno);
+
+END;
+/
+show errors;

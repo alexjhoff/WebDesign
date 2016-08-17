@@ -1,0 +1,929 @@
+SQL> @tables.sql
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+SQL> @lab6_1.sql
+SP2-0310: unable to open file "lab6_1.sql"
+SQL> @Lab6_1.sql
+
+Trigger created.
+
+No errors.
+SQL> set serveroutput on;
+SQL> insert into BANKCUST_6 values('c1','Smith','32 Lincoln st','SJ');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c2','Jones','44 Benton st','SJ');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c3','Peters','12 palm st','SFO');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c20','Chen','20 san felipo','LA');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c33','Williams',' 11 cherry Ave','SFO');select * from BANKCUST_6;
+insert into BANKCUST_6 values('c33','Williams',' 11 cherry Ave','SFO');select * from BANKCUST_6
+                                                                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into BANKCUST_6 values('c33','Williams',' 11 cherry Ave','SFO');
+
+1 row created.
+
+SQL> select * from BANKCUST_6;
+
+CUSTN CUSTNAME             STREET                         CITY                  
+----- -------------------- ------------------------------ --------------------  
+c1    Smith                32 Lincoln st                  SJ                    
+c2    Jones                44 Benton st                   SJ                    
+c3    Peters               12 palm st                     SFO                   
+c20   Chen                 20 san felipo                  LA                    
+c33   Williams              11 cherry Ave                 SFO                   
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1              0                                                               
+c2              0                                                               
+c3              0                                                               
+c20             0                                                               
+c33             0                                                               
+
+SQL> @lab6_2.sql
+
+Warning: Trigger created with compilation errors.
+
+Errors for TRIGGER DISPLAY_ACCOUNT_TRIG:
+
+LINE/COL ERROR                                                                  
+-------- -----------------------------------------------------------------      
+2/3      PL/SQL: SQL Statement ignored                                          
+4/21     PL/SQL: ORA-00904: "NEW"."ACCOUNTNO": invalid identifier               
+SQL> @lab6_2.sql
+
+Warning: Trigger created with compilation errors.
+
+Errors for TRIGGER DISPLAY_ACCOUNT_TRIG:
+
+LINE/COL ERROR                                                                  
+-------- -----------------------------------------------------------------      
+2/3      PLS-00428: an INTO clause is expected in this SELECT statement         
+SQL> @lab6_2.sql
+
+Warning: Trigger created with compilation errors.
+
+Errors for TRIGGER DISPLAY_ACCOUNT_TRIG:
+
+LINE/COL ERROR                                                                  
+-------- -----------------------------------------------------------------      
+2/37     PLS-00103: Encountered the symbol "" when expecting one of the         
+         following:                                                             
+         ) , * & = - + < / > at in is mod remainder not rem =>                  
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2           
+         like4 likec as between from using || multiset member                   
+         submultiset                                                            
+         The symbol "," was substituted for "" to continue.                     
+                                                                                
+3/39     PLS-00103: Encountered the symbol "" when expecting one of the         
+         following:                                                             
+         ) , * & = - + < / > at in is mod remainder not rem =>                  
+
+LINE/COL ERROR                                                                  
+-------- -----------------------------------------------------------------      
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2           
+         like4 likec as between from using || multiset member                   
+         submultiset                                                            
+         The symbol "," was substituted for "" to continue.                     
+                                                                                
+4/34     PLS-00103: Encountered the symbol "" when expecting one of the         
+         following:                                                             
+         ) , * & = - + < / > at in is mod remainder not rem =>                  
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2           
+         like4 likec as between from using || multiset member                   
+         submultiset                                                            
+
+LINE/COL ERROR                                                                  
+-------- -----------------------------------------------------------------      
+         The symbol "," was substituted for "" to continue.                     
+                                                                                
+5/34     PLS-00103: Encountered the symbol "" when expecting one of the         
+         following:                                                             
+         ) , * & = - + < / > at in is mod remainder not rem =>                  
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2           
+         like4 likec as between from using || multiset member                   
+         submultiset                                                            
+         The symbol "," was substituted for "" to continue.                     
+                                                                                
+SQL> @lab6_2.sql
+
+Trigger created.
+
+No errors.
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+Accountno:a2134                                                                 
+Accounttype:saving                                                              
+Amount:5000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+Accountno:a4378                                                                 
+Accounttype:checking                                                            
+Amount:1000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+Accountno:a5363                                                                 
+Accounttype:saving                                                              
+Amount:8000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+Accountno:a7236                                                                 
+Accounttype:checking                                                            
+Amount:500                                                                      
+Custno:c33                                                                      
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+Accountno:a8577                                                                 
+Accounttype:checking                                                            
+Amount:150                                                                      
+Custno:c20                                                                      
+
+1 row created.
+
+SQL> select * from accounts_6
+  2  ;
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking          150 c20                                                 
+
+6 rows selected.
+
+SQL> delete from account_6
+  2  ;
+delete from account_6
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> delete from accounts_6;
+
+6 rows deleted.
+
+SQL> @Lab6_3.sql
+SQL> ;
+  1* delete from accounts_6
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @Lab6_3.sql
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ;
+  1* delete from accounts_6
+SQL> ;
+  1* delete from accounts_6
+SQL> ;
+  1* delete from accounts_6
+SQL> ;
+  1* delete from accounts_6
+SQL> ;
+  1* delete from accounts_6
+SQL> ;
+  1* delete from accounts_6
+SQL> ;'
+SP2-0042: unknown command ";'" - rest of line ignored.
+SQL> ;
+  1* delete from accounts_6
+SQL> ';
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> sdfsdf
+SP2-0042: unknown command "sdfsdf" - rest of line ignored.
+SQL> s
+SP2-0042: unknown command "s" - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> sdf
+SP2-0042: unknown command "sdf" - rest of line ignored.
+SQL> sd
+SP2-0042: unknown command "sd" - rest of line ignored.
+SQL> sdf
+SP2-0042: unknown command "sdf" - rest of line ignored.
+SQL> sdfd
+SP2-0042: unknown command "sdfd" - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> sdf
+SP2-0042: unknown command "sdf" - rest of line ignored.
+SQL> sdfsd
+SP2-0042: unknown command "sdfsd" - rest of line ignored.
+SQL> fs
+SP2-0042: unknown command "fs" - rest of line ignored.
+SQL> f
+SP2-0042: unknown command "f" - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> fsd
+SP2-0042: unknown command "fsd" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @Lab6_3.sql
+SQL> 
+SQL> select * from accounts_6;
+
+no rows selected
+
+SQL> @Lab6_3.sql
+SQL> @Lab6_3.sql
+
+Trigger created.
+
+No errors.
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+Smith,SJ,a1523,2000                                                             
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+Accountno:a2134                                                                 
+Accounttype:saving                                                              
+Amount:5000                                                                     
+Custno:c1                                                                       
+Smith,SJ,a1523,2000                                                             
+Smith,SJ,a2134,5000                                                             
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+Accountno:a4378                                                                 
+Accounttype:checking                                                            
+Amount:1000                                                                     
+Custno:c2                                                                       
+Smith,SJ,a1523,2000                                                             
+Smith,SJ,a2134,5000                                                             
+Jones,SJ,a4378,1000                                                             
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+Accountno:a5363                                                                 
+Accounttype:saving                                                              
+Amount:8000                                                                     
+Custno:c2                                                                       
+Smith,SJ,a1523,2000                                                             
+Smith,SJ,a2134,5000                                                             
+Jones,SJ,a4378,1000                                                             
+Jones,SJ,a5363,8000                                                             
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+Accountno:a7236                                                                 
+Accounttype:checking                                                            
+Amount:500                                                                      
+Custno:c33                                                                      
+Smith,SJ,a1523,2000                                                             
+Smith,SJ,a2134,5000                                                             
+Jones,SJ,a4378,1000                                                             
+Jones,SJ,a5363,8000                                                             
+Williams,SFO,a7236,500                                                          
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+Accountno:a8577                                                                 
+Accounttype:checking                                                            
+Amount:150                                                                      
+Custno:c20                                                                      
+Smith,SJ,a1523,2000                                                             
+Smith,SJ,a2134,5000                                                             
+Jones,SJ,a4378,1000                                                             
+Jones,SJ,a5363,8000                                                             
+Williams,SFO,a7236,500                                                          
+Chen,LA,a8577,150                                                               
+
+1 row created.
+
+SQL> select * from accounts_6
+  2  ;
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking          150 c20                                                 
+
+6 rows selected.
+
+SQL> 
+SQL> @Lab6_4.sql
+AFTER INSERT OR ON Accounts_6
+                *
+ERROR at line 2:
+ORA-04072: invalid trigger type 
+
+
+SQL> @Lab6_4.sql
+AFTER INSERT OR ON Accounts_6
+                *
+ERROR at line 2:
+ORA-04072: invalid trigger type 
+
+
+SQL> @Lab6_4.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL> @Lab6_4.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL> @Lab6_4.slq
+SP2-0310: unable to open file "Lab6_4.slq"
+SQL> @Lab6_4.sql
+
+Trigger created.
+
+SQL> ALTER TRIGGER display_acct_trig disable;
+
+Trigger altered.
+
+SQL> delete from accounts_6;
+
+6 rows deleted.
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1              0                                                               
+c2              0                                                               
+c3              0                                                               
+c20             0                                                               
+c33             0                                                               
+
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+Accountno:a2134                                                                 
+Accounttype:saving                                                              
+Amount:5000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+Accountno:a4378                                                                 
+Accounttype:checking                                                            
+Amount:1000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+Accountno:a5363                                                                 
+Accounttype:saving                                                              
+Amount:8000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+Accountno:a7236                                                                 
+Accounttype:checking                                                            
+Amount:500                                                                      
+Custno:c33                                                                      
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+Accountno:a8577                                                                 
+Accounttype:checking                                                            
+Amount:150                                                                      
+Custno:c20                                                                      
+
+1 row created.
+
+SQL> select * from totals_6
+  2  ;
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1           7000                                                               
+c2           9000                                                               
+c3              0                                                               
+c20           150                                                               
+c33           500                                                               
+
+SQL> Create table BILLPAY_6 (Billno varchar(5), Custno varchar(5), AccountNo VARCHAR(5), amount NUMBER(10,2), CONSTRAINT billpay_fkey1 FOREIGN Key (custno)REFERENCES BANKCUST_6(custno), CONSTRAINT billpay_fkey2 FOREIGN Key (accountno)REFERENCES ACCOUNTS_6(accountno));
+
+Table created.
+
+SQL> @Lab6_5.sql
+
+Trigger created.
+
+No errors.
+SQL> delete from totals_6;
+
+5 rows deleted.
+
+SQL> delete from BillPay_6;
+
+0 rows deleted.
+
+SQL> delete from ACCOUNTS_6;
+
+6 rows deleted.
+
+SQL> delete from BANKCUST_6;
+
+5 rows deleted.
+
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (AHOFF.ACCOUNTS_FKEY) violated - parent key not 
+found 
+
+
+SQL> insert into BANKCUST_6 values('c1','Smith','32 Lincoln st','SJ');
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> Insert into billpay_6 values ('b3','c1','a1523', 1000.00);
+
+1 row created.
+
+SQL> select * from accounts_6
+  2  ;
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         1000 c1                                                  
+
+SQL> delete from totals_6;
+
+1 row deleted.
+
+SQL> delete from BillPay_6;
+
+1 row deleted.
+
+SQL> delete from ACCOUNTS_6;
+
+1 row deleted.
+
+SQL> delete from BANKCUST_6;
+
+1 row deleted.
+
+SQL> 
+SQL> insert into BANKCUST_6 values('c1','Smith','32 Lincoln st','SJ');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c2','Jones','44 Benton st','SJ');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c3','Peters','12 palm st','SFO');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c20','Chen','20 san felipo','LA');
+
+1 row created.
+
+SQL> insert into BANKCUST_6 values('c33','Williams',' 11 cherry Ave','SFO');
+
+1 row created.
+
+SQL> 
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+Accountno:a2134                                                                 
+Accounttype:saving                                                              
+Amount:5000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+Accountno:a4378                                                                 
+Accounttype:checking                                                            
+Amount:1000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+Accountno:a5363                                                                 
+Accounttype:saving                                                              
+Amount:8000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+Accountno:a7236                                                                 
+Accounttype:checking                                                            
+Amount:500                                                                      
+Custno:c33                                                                      
+
+1 row created.
+
+SQL> insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+Accountno:a8577                                                                 
+Accounttype:checking                                                            
+Amount:150                                                                      
+Custno:c20                                                                      
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> Select * from BANKCUST_6;
+
+CUSTN CUSTNAME             STREET                         CITY                  
+----- -------------------- ------------------------------ --------------------  
+c1    Smith                32 Lincoln st                  SJ                    
+c2    Jones                44 Benton st                   SJ                    
+c3    Peters               12 palm st                     SFO                   
+c20   Chen                 20 san felipo                  LA                    
+c33   Williams              11 cherry Ave                 SFO                   
+
+SQL> Select * from ACCOUNTS_6;
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking          150 c20                                                 
+
+6 rows selected.
+
+SQL> Select * from TOTALS_6;delete from totals_6;
+Select * from TOTALS_6;delete from totals_6
+                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> delete from BillPay_6;
+
+0 rows deleted.
+
+SQL> delete from ACCOUNTS_6;
+
+6 rows deleted.
+
+SQL> delete from BANKCUST_6;@Ex5.sql
+  2  ;
+delete from BANKCUST_6;@Ex5.sql
+                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select * from accounts_6;
+
+no rows selected
+
+SQL> @Ex5.sql
+
+5 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+5 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+5 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+5 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Accountno:a1523                                                                 
+Accounttype:checking                                                            
+Amount:2000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+Accountno:a2134                                                                 
+Accounttype:saving                                                              
+Amount:5000                                                                     
+Custno:c1                                                                       
+
+1 row created.
+
+Accountno:a4378                                                                 
+Accounttype:checking                                                            
+Amount:1000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+Accountno:a5363                                                                 
+Accounttype:saving                                                              
+Amount:8000                                                                     
+Custno:c2                                                                       
+
+1 row created.
+
+Accountno:a7236                                                                 
+Accounttype:checking                                                            
+Amount:500                                                                      
+Custno:c33                                                                      
+
+1 row created.
+
+Accountno:a8577                                                                 
+Accounttype:checking                                                            
+Amount:150                                                                      
+Custno:c20                                                                      
+
+1 row created.
+
+
+CUSTN CUSTNAME             STREET                         CITY                  
+----- -------------------- ------------------------------ --------------------  
+c1    Smith                32 Lincoln st                  SJ                    
+c2    Jones                44 Benton st                   SJ                    
+c3    Peters               12 palm st                     SFO                   
+c20   Chen                 20 san felipo                  LA                    
+c33   Williams              11 cherry Ave                 SFO                   
+
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking          150 c20                                                 
+
+6 rows selected.
+
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1           7000                                                               
+c2           9000                                                               
+c3              0                                                               
+c20           150                                                               
+c33           500                                                               
+
+insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00274690) violated 
+
+
+
+CUSTN CUSTNAME             STREET                         CITY                  
+----- -------------------- ------------------------------ --------------------  
+c1    Smith                32 Lincoln st                  SJ                    
+c2    Jones                44 Benton st                   SJ                    
+c3    Peters               12 palm st                     SFO                   
+c20   Chen                 20 san felipo                  LA                    
+c33   Williams              11 cherry Ave                 SFO                   
+
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking         2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking          150 c20                                                 
+
+6 rows selected.
+
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1           7000                                                               
+c2           9000                                                               
+c3              0                                                               
+c20           150                                                               
+c33           500                                                               
+
+SQL> Insert into billpay_6 values ('b1','c20', 'a8577',150.00);
+
+1 row created.
+
+SQL> Insert into billpay_6 values ('b2','c2','a1523', 3000.00);
+
+1 row created.
+
+SQL> Insert into billpay_6 values ('b3','c1','a1523', 1000.00);
+
+1 row created.
+
+SQL> select * from ACCOUNTS_6;
+
+ACCOU ACCOUNTTYP     AMOUNT CUSTN                                               
+----- ---------- ---------- -----                                               
+a1523 checking        -2000 c1                                                  
+a2134 saving           5000 c1                                                  
+a4378 checking         1000 c2                                                  
+a5363 saving           8000 c2                                                  
+a7236 checking          500 c33                                                 
+a8577 checking            0 c20                                                 
+
+6 rows selected.
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT                                                               
+----- -----------                                                               
+c1           7000                                                               
+c2           9000                                                               
+c3              0                                                               
+c20           150                                                               
+c33           500                                                               
+
+SQL> @Lab6_6.sql
+
+Trigger created.
+
+No errors.
+SQL> UPDATE BANKCUST_6
+  2  Set custno=’c99’
+  3  Where custno=’c1’;
+Set custno=’c99’
+           *
+ERROR at line 2:
+ORA-00911: invalid character 
+
+
+SQL> UPDATE BANKCUST_6
+  2  Set custno='c99'
+  3  Where custno='c1';
+UPDATE BANKCUST_6
+       *
+ERROR at line 1:
+ORA-20999: Cannot update a Primary Key 
+ORA-06512: at "AHOFF.NOUPDATEPK_TRIG", line 3 
+ORA-04088: error during execution of trigger 'AHOFF.NOUPDATEPK_TRIG' 
+
+
+SQL> spool off

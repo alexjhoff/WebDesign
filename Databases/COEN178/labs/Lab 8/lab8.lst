@@ -1,0 +1,248 @@
+SQL> Create table ItemOrder (orderNo VARCHAR(5) Primary key, qty Integer);
+
+Table created.
+
+SQL> @lab8part1.sql
+
+Trigger created.
+
+SQL> Insert into ItemOrder values ('o1',100);
+Insert into ItemOrder values ('o1',100)
+            *
+ERROR at line 1:
+ORA-04091: table AHOFF.ITEMORDER is mutating, trigger/function may not see it 
+ORA-06512: at "AHOFF.ITEMORDER_AFTER_INSERT_TRIG", line 5 
+ORA-04088: error during execution of trigger 
+'AHOFF.ITEMORDER_AFTER_INSERT_TRIG' 
+
+
+SQL> CREATE TABLE Course
+  2  (
+  3      courseNo   INTEGER PRIMARY KEY,
+  4      courseName VARCHAR(20)
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE Course_Prereq
+  2  (
+  3      courseNo   INTEGER ,
+  4      prereqNo Integer,
+  5  	Foreign Key(prereqNo) references Course (courseNo)
+  6  );
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> insert into Course values (10,'C++');
+
+1 row created.
+
+SQL> insert into Course values (11,'Java');
+
+1 row created.
+
+SQL> insert into Course values (12,'Python');
+
+1 row created.
+
+SQL> insert into Course values (121,'Web');
+
+1 row created.
+
+SQL> insert into Course values (133,'Software Eng');select * from course;
+insert into Course values (133,'Software Eng');select * from course
+                                              *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select * from course;
+
+  COURSENO COURSENAME                                                           
+---------- --------------------                                                 
+        10 C++                                                                  
+        11 Java                                                                 
+        12 Python                                                               
+       121 Web                                                                  
+
+SQL> insert into Course values (133,'Software Eng');
+
+1 row created.
+
+SQL> @lab8part2.sql
+
+Trigger created.
+
+No errors.
+SQL> insert into Course_Prereq values (121,11);
+
+1 row created.
+
+SQL> 
+SQL> insert into Course_Prereq values (121,10);
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> select * from Course_prereq;
+
+  COURSENO   PREREQNO                                                           
+---------- ----------                                                           
+       121         11                                                           
+       121         10                                                           
+
+SQL> insert into Course_Prereq values (121,12);
+insert into Course_Prereq values (121,12)
+            *
+ERROR at line 1:
+ORA-20000: Only 2 prereqs for course 
+ORA-06512: at "AHOFF.LIMITTEST", line 16 
+ORA-04088: error during execution of trigger 'AHOFF.LIMITTEST' 
+
+
+SQL> select * from course_prereq;
+
+  COURSENO   PREREQNO                                                           
+---------- ----------                                                           
+       121         11                                                           
+       121         10                                                           
+
+SQL> insert into Course_Prereq values (133,12);
+
+1 row created.
+
+SQL> update COURSE_PREREQ
+  2  set courseno = 121 where courseno= 133;
+update COURSE_PREREQ
+       *
+ERROR at line 1:
+ORA-04091: table AHOFF.COURSE_PREREQ is mutating, trigger/function may not see 
+it 
+ORA-06512: at "AHOFF.LIMITTEST", line 6 
+ORA-04088: error during execution of trigger 'AHOFF.LIMITTEST' 
+
+
+SQL> select * from course_prereq;
+
+  COURSENO   PREREQNO                                                           
+---------- ----------                                                           
+       121         11                                                           
+       121         10                                                           
+       133         12                                                           
+
+SQL> delete from course_prereq;
+
+3 rows deleted.
+
+SQL> @lab8part3.sql
+
+Trigger created.
+
+No errors.
+SQL> insert into Course_Prereq values (121,11);
+
+1 row created.
+
+SQL> insert into Course_Prereq values (121,10);
+
+1 row created.
+
+SQL> insert into Course_Prereq values (121,12);
+insert into Course_Prereq values (121,12)
+            *
+ERROR at line 1:
+ORA-20000: Only 2 prereqs for course 
+ORA-06512: at "AHOFF.LIMITTEST", line 21 
+ORA-04088: error during execution of trigger 'AHOFF.LIMITTEST' 
+
+
+SQL> insert into Course_Prereq values (133,12);
+
+1 row created.
+
+SQL> select * from course_prereq;
+
+  COURSENO   PREREQNO                                                           
+---------- ----------                                                           
+       121         11                                                           
+       121         10                                                           
+       133         12                                                           
+
+SQL> update COURSE_PREREQ
+  2  set courseno = 121 where courseno= 133;
+
+1 row updated.
+
+SQL> select * from course_prereq;
+
+  COURSENO   PREREQNO                                                           
+---------- ----------                                                           
+       121         11                                                           
+       121         10                                                           
+       121         12                                                           
+
+SQL> CREATE TABLE SUPERVISOR (EmpNo varchar(5), name varchar(10), Rental varchar(5));
+
+Table created.
+
+SQL> insert into SUPERVISOR values ('8994','Tom','1000');
+
+1 row created.
+
+SQL> insert into SUPERVISOR values ('432','Bill','2999');
+
+1 row created.
+
+SQL> insert into SUPERVISOR values ('12','Sam','1000');
+
+1 row created.
+
+SQL> @lab8part4.sql
+
+Trigger created.
+
+SQL> insert into SUPERVISOR values ('8994','Tom','1001');
+
+1 row created.
+
+SQL> insert into SUPERVISOR values ('8994','Tom','1002');
+
+1 row created.
+
+SQL>  insert into SUPERVISOR values ('8994','Tom','1003');
+
+1 row created.
+
+SQL> select * from supervisor;
+
+EMPNO NAME       RENTA                                                          
+----- ---------- -----                                                          
+8994  Tom        1000                                                           
+432   Bill       2999                                                           
+12    Sam        1000                                                           
+8994  Tom        1001                                                           
+8994  Tom        1002                                                           
+8994  Tom        1003                                                           
+
+6 rows selected.
+
+SQL> @lab8part4.sql
+
+Trigger created.
+
+SQL> insert into SUPERVISOR values ('8994','Tom','1001');
+insert into SUPERVISOR values ('8994','Tom','1001')
+            *
+ERROR at line 1:
+ORA-20000: Only 3 rentals for supervisor 
+ORA-06512: at "AHOFF.SUPERTEST", line 21 
+ORA-04088: error during execution of trigger 'AHOFF.SUPERTEST' 
+
+
+SQL> spool off

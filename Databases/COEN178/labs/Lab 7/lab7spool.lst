@@ -1,0 +1,1438 @@
+SQL> @report.sql
+****************************************************************
+Generating the Report
+
+CURDATE                                                                        
+-----------                                                                    
+18-May-2016                                                                    
+
+18-May-2016
+
+no rows selected
+
+SQL> CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2,entertainment Number(10,2),rent Number(10,2));
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2,entertainment Number(10,2),rent Number(10,2))
+                                                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2,entertainment Number(10,2),rent Number(10,2));[D[D
+  2  
+SQL> 
+SQL> 
+SQL> CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2));
+
+Table created.
+
+SQL> INSERT INTO EXPENSES VALUES(’12-Mar-2015’,15.25,10.50,500.00);
+INSERT INTO EXPENSES VALUES(’12-Mar-2015’,15.25,10.50,500.00)
+                            *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00);
+
+1 row created.
+
+SQL> INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00);
+
+1 row created.
+
+SQL> INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00);
+
+1 row created.
+
+SQL> INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00);
+
+1 row created.
+
+SQL> INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00);
+
+1 row created.
+
+SQL> select * from expenses;
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+EXPENSEDA  GROCERIES ENTERTAINMENT       RENT                                  
+--------- ---------- ------------- ----------                                  
+12-MAR-15      15.25          10.5        500                                  
+15-JUL-14      25.75             5        700                                  
+27-JAN-14         10            12        400                                  
+20-FEB-15         12            15        800                                  
+30-OCT-14          5             2        100                                  
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+EXPENSEDA  GROCERIES ENTERTAINMENT       RENT                                  
+--------- ---------- ------------- ----------                                  
+12-MAR-15      15.25          10.5        500                                  
+15-JUL-14      25.75             5        700                                  
+27-JAN-14         10            12        400                                  
+20-FEB-15         12            15        800                                  
+30-OCT-14          5             2        100                                  
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date       Groceries Entertainment       Rent                                  
+========= ========== ============= ==========                                  
+12-MAR-15      15.25          10.5        500                                  
+15-JUL-14      25.75             5        700                                  
+27-JAN-14         10            12        400                                  
+20-FEB-15         12            15        800                                  
+30-OCT-14          5             2        100                                  
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $68.00        $44.50 ########                                               
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $13.60         $8.90  $500.00                                               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $13.60         $8.90  $500.00                                               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+Average      $13.60         $8.90  $500.00                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $68.00        $44.50 ########                                               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+TOTAL        $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $13.60         $8.90  $500.00                                               
+   $25.75        $15.00  $800.00                                               
+   $68.00        $44.50 ########                                               
+
+SQL> \
+SP2-0042: unknown command "\" - rest of line ignored.
+SQL> \\\\
+SP2-0042: unknown command "\\\\" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+SP2-0734: unknown command beginning "TITLE CENT..." - rest of line ignored.
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $13.60         $8.90  $500.00                                               
+   $25.75        $15.00  $800.00                                               
+   $68.00        $44.50 ########                                               
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                                                               
+                                                                               
+                              Suppliers in a City                              
+                                                                               
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+                                                                               
+15-JUL-14    $25.75         $5.00  $700.00                                     
+                                                                               
+27-JAN-14    $10.00        $12.00  $400.00                                     
+                                                                               
+20-FEB-15    $12.00        $15.00  $800.00                                     
+                                                                               
+30-OCT-14     $5.00         $2.00  $100.00                                     
+                                                                               
+
+
+                                 Expense Report                                
+Groceries Entertainment     Rent                                               
+========= ============= ========                                               
+   $15.25        $10.50  $500.00                                               
+   $25.75         $5.00  $700.00                                               
+   $10.00        $12.00  $400.00                                               
+   $12.00        $15.00  $800.00                                               
+    $5.00         $2.00  $100.00                                               
+--------- ------------- --------                                               
+   $13.60         $8.90  $500.00                                               
+   $25.75        $15.00  $800.00                                               
+   $68.00        $44.50 ########                                               
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment     Rent                                     
+========= ========= ============= ========                                     
+12-MAR-15    $15.25        $10.50  $500.00                                     
+15-JUL-14    $25.75         $5.00  $700.00                                     
+27-JAN-14    $10.00        $12.00  $400.00                                     
+20-FEB-15    $12.00        $15.00  $800.00                                     
+30-OCT-14     $5.00         $2.00  $100.00                                     
+          --------- ------------- --------                                     
+avg          $13.60         $8.90  $500.00                                     
+maximum      $25.75        $15.00  $800.00                                     
+sum          $68.00        $44.50 ########                                     
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+                                                                               
+15-JUL-14    $25.75         $5.00     $700.00                                  
+                                                                               
+27-JAN-14    $10.00        $12.00     $400.00                                  
+                                                                               
+20-FEB-15    $12.00        $15.00     $800.00                                  
+                                                                               
+30-OCT-14     $5.00         $2.00     $100.00                                  
+                                                                               
+
+
+                                 Expense Report                                
+Groceries Entertainment        Rent                                            
+========= ============= ===========                                            
+   $15.25        $10.50     $500.00                                            
+   $25.75         $5.00     $700.00                                            
+   $10.00        $12.00     $400.00                                            
+   $12.00        $15.00     $800.00                                            
+    $5.00         $2.00     $100.00                                            
+--------- ------------- -----------                                            
+   $13.60         $8.90     $500.00                                            
+   $25.75        $15.00     $800.00                                            
+   $68.00        $44.50   $2,500.00                                            
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+                                                                               
+15-JUL-14    $25.75         $5.00     $700.00                                  
+                                                                               
+27-JAN-14    $10.00        $12.00     $400.00                                  
+                                                                               
+20-FEB-15    $12.00        $15.00     $800.00                                  
+                                                                               
+30-OCT-14     $5.00         $2.00     $100.00                                  
+                                                                               
+
+SP2-0158: unknown COMPUTE option "TOTAL"
+
+                                 Expense Report                                
+Groceries Entertainment        Rent                                            
+========= ============= ===========                                            
+   $15.25        $10.50     $500.00                                            
+   $25.75         $5.00     $700.00                                            
+   $10.00        $12.00     $400.00                                            
+   $12.00        $15.00     $800.00                                            
+    $5.00         $2.00     $100.00                                            
+--------- ------------- -----------                                            
+   $13.60         $8.90     $500.00                                            
+   $25.75        $15.00     $800.00                                            
+   $68.00        $44.50   $2,500.00                                            
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+avg          $13.60         $8.90     $500.00                                  
+maximum      $25.75        $15.00     $800.00                                  
+sum          $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+                                                                               
+15-JUL-14    $25.75         $5.00     $700.00                                  
+                                                                               
+27-JAN-14    $10.00        $12.00     $400.00                                  
+                                                                               
+20-FEB-15    $12.00        $15.00     $800.00                                  
+                                                                               
+30-OCT-14     $5.00         $2.00     $100.00                                  
+                                                                               
+
+
+                                 Expense Report                                
+Groceries Entertainment        Rent                                            
+========= ============= ===========                                            
+   $15.25        $10.50     $500.00                                            
+   $25.75         $5.00     $700.00                                            
+   $10.00        $12.00     $400.00                                            
+   $12.00        $15.00     $800.00                                            
+    $5.00         $2.00     $100.00                                            
+--------- ------------- -----------                                            
+   $13.60         $8.90     $500.00                                            
+   $25.75        $15.00     $800.00                                            
+   $68.00        $44.50   $2,500.00                                            
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+                                                                               
+15-JUL-14    $25.75         $5.00     $700.00                                  
+                                                                               
+27-JAN-14    $10.00        $12.00     $400.00                                  
+                                                                               
+20-FEB-15    $12.00        $15.00     $800.00                                  
+                                                                               
+30-OCT-14     $5.00         $2.00     $100.00                                  
+                                                                               
+
+
+                                 Expense Report                                
+Groceries Entertainment        Rent                                            
+========= ============= ===========                                            
+   $15.25        $10.50     $500.00                                            
+   $25.75         $5.00     $700.00                                            
+   $10.00        $12.00     $400.00                                            
+   $12.00        $15.00     $800.00                                            
+    $5.00         $2.00     $100.00                                            
+--------- ------------- -----------                                            
+   $13.60         $8.90     $500.00                                            
+   $25.75        $15.00     $800.00                                            
+   $68.00        $44.50   $2,500.00                                            
+
+SQL> @lab7_report.sql
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AHOFF.SYS_C00275784) violated 
+
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+15-JUL-14    $25.75         $5.00     $700.00                                  
+27-JAN-14    $10.00        $12.00     $400.00                                  
+20-FEB-15    $12.00        $15.00     $800.00                                  
+30-OCT-14     $5.00         $2.00     $100.00                                  
+          --------- ------------- -----------                                  
+AVERAGE      $13.60         $8.90     $500.00                                  
+MAXIMUM      $25.75        $15.00     $800.00                                  
+TOTAL        $68.00        $44.50   $2,500.00                                  
+
+
+                                 Expense Report                                
+Date      Groceries Entertainment        Rent                                  
+========= ========= ============= ===========                                  
+12-MAR-15    $15.25        $10.50     $500.00                                  
+                                                                               
+15-JUL-14    $25.75         $5.00     $700.00                                  
+                                                                               
+27-JAN-14    $10.00        $12.00     $400.00                                  
+                                                                               
+20-FEB-15    $12.00        $15.00     $800.00                                  
+                                                                               
+30-OCT-14     $5.00         $2.00     $100.00                                  
+                                                                               
+
+
+                                 Expense Report                                
+Groceries Entertainment        Rent                                            
+========= ============= ===========                                            
+   $15.25        $10.50     $500.00                                            
+   $25.75         $5.00     $700.00                                            
+   $10.00        $12.00     $400.00                                            
+   $12.00        $15.00     $800.00                                            
+    $5.00         $2.00     $100.00                                            
+--------- ------------- -----------                                            
+   $13.60         $8.90     $500.00                                            
+   $25.75        $15.00     $800.00                                            
+   $68.00        $44.50   $2,500.00                                            
+
+SQL> 

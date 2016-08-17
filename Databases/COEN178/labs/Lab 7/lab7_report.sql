@@ -1,0 +1,36 @@
+CREATE TABLE Expenses(expenseDate date PRIMARY KEY, groceries Number(10,2),entertainment Number(10,2),rent Number(10,2));
+
+INSERT INTO EXPENSES VALUES('12-Mar-2015',15.25,10.50,500.00);
+INSERT INTO EXPENSES VALUES('15-Jul-2014',25.75,5.00,700.00);
+INSERT INTO EXPENSES VALUES('27-Jan-2014',10.00,12.00,400.00);
+INSERT INTO EXPENSES VALUES('20-Feb-2015',12.00,15.00,800.00);
+INSERT INTO EXPENSES VALUES('30-Oct-2014',5.00,2.00,100.00);
+
+Select * from EXPENSES;
+
+COLUMN expenseDate        HEADING 'Date'
+COLUMN groceries        HEADING 'Groceries'
+COLUMN entertainment        HEADING 'Entertainment'
+COLUMN rent        HEADING 'Rent'
+
+TTITLE CENTER "Expense Report"
+/
+
+SET UNDERLINE =
+/
+
+BREAK ON ROW SKIP 1
+
+COLUMN groceries FORMAT $99.90
+COLUMN entertainment FORMAT $99.90
+COLUMN rent FORMAT $99,999.90
+/
+
+BREAK ON REPORT
+COMPUTE AVG LABEL AVERAGE MAX LABEL MAXIMUM SUM LABEL TOTAL OF groceries entertainment rent ON REPORT
+
+SELECT groceries, entertainment, rent
+FROM EXPENSES;
+
+CLEAR BREAKS
+CLEAR COMPUTES
